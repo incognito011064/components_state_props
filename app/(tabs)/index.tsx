@@ -13,10 +13,12 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Ako ang Parent Screen</Text>
 
-      <View style={styles.stateBox}>
-        <Text style={styles.stateText}>STATE LOCKER</Text>
-        <Text style={styles.count}>count: {count}</Text>
-      </View>
+      <View style={styles.speedometer}>
+      <View style={styles.innerCircle}>
+      <Text style={styles.speedText}>{count}</Text>
+      <Text style={styles.kmh}>State Locker</Text>
+     </View>
+    </View>
 
       <CounterDisplay
         count={count}
@@ -39,20 +41,39 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
   },
-  stateBox: {
-    backgroundColor: 'green',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 20,
-    width: '100%',
-    alignItems: 'center',
-  },
-  stateText: {
-    color: '#fff',
-  },
-  count: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+speedometer: {
+  width: 220,
+  height: 220,
+  borderRadius: 110,
+  borderWidth: 15,
+  borderColor: '#ff3b3b', // outer ring
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom: 30,
+  backgroundColor: '#1a1a1a',
+  shadowColor: '#ff3b3b',
+  shadowOpacity: 0.8,
+  shadowRadius: 20,
+},
+
+innerCircle: {
+  width: 160,
+  height: 160,
+  borderRadius: 80,
+  backgroundColor: '#000',
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+
+speedText: {
+  color: '#00ffcc',
+  fontSize: 40,
+  fontWeight: 'bold',
+},
+
+kmh: {
+  color: '#aaa',
+  fontSize: 14,
+  marginTop: 5,
+},
 });
