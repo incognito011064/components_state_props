@@ -7,12 +7,12 @@ export default function HomeScreen() {
 
   const addCount = () => setCount(count + 1);
   const minusCount = () => setCount(count - 1);
-  const resetCount = () => setCount(0);
+  const resetCount = () => setCount(100);
+  
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Ako ang Parent Screen</Text>
-
       <View style={styles.speedometer}>
       <View style={styles.innerCircle}>
       <Text style={styles.speedText}>{count}</Text>

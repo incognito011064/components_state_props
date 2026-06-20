@@ -40,7 +40,6 @@ const stopAction = () => {
 
       {/* Display the count value received from the parent component via props */}
       <Text style={styles.number}>{count}</Text>
-
       <Text style={styles.label}>[PROPS FUNCTION]</Text>
 
       <TouchableOpacity
@@ -64,7 +63,7 @@ const stopAction = () => {
       <TouchableOpacity
         style={styles.resetBtn}
         onPress={onReset}
-        onPressIn={startAdding} // Example: using the same interval for reset (you might want a different behavior)
+        onPressIn={startAdding}
         onPressOut={stopAction}
       >
         <Text style={styles.btnText}>Reset Count</Text>
@@ -86,31 +85,33 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 10,
+    fontWeight: 'bold',
   },
   label: {
-    color: 'blue',
+    color: 'black',
     marginTop: 10,
   },
   number: {
     fontSize: 40,
     marginVertical: 10,
+    fontWeight: 'bold',
   },
   addBtn: {
-    backgroundColor: 'hotpink',
+    backgroundColor: 'orange',
     padding: 12,
     borderRadius: 10,
     width: '100%',
     marginTop: 10,
   },
   minusBtn: {
-    backgroundColor: 'red',
+    backgroundColor: 'green',
     padding: 12,
     borderRadius: 10,
     width: '100%',
     marginTop: 10,
   },
   resetBtn: {
-    backgroundColor: 'gray',
+    backgroundColor: 'red',
     padding: 12,
     borderRadius: 10,
     width: '100%',
