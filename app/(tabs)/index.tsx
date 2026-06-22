@@ -5,7 +5,7 @@ import CounterDisplay from '../../components/CounterDisplay';
 export default function HomeScreen() {
   const [count, setCount] = useState(100);
 
- 
+
   const addCount = () => setCount(prev => prev + 1);
   const minusCount = () => setCount(prev => prev - 1);
   const resetCount = () => setCount(100);
@@ -14,6 +14,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Speed Counter</Text>
 
+      
       <View style={styles.speedometer}>
         <View style={styles.innerCircle}>
           <Text style={styles.speedText}>{count}</Text>
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 30,
     backgroundColor: '#1a1a1a',
-
     shadowColor: '#ff3b3b',
     shadowOpacity: 0.8,
     shadowRadius: 20,

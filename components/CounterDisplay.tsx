@@ -8,20 +8,17 @@ type Props = {
   onReset: () => void;
 };
 
-export default function CounterDisplay({
-  count,
-  onAdd,
-  onMinus,
-  onReset,
-}: Props) {
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+export default function CounterDisplay(props: Props) {
+  const { count, onAdd, onMinus, onReset } = props;
+
+const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startAdding = () => {
     if (intervalRef.current) return;
 
     intervalRef.current = setInterval(() => {
       onAdd();
-    }, 70);
+    }, 100);
   };
 
   const startMinus = () => {
@@ -29,7 +26,7 @@ export default function CounterDisplay({
 
     intervalRef.current = setInterval(() => {
       onMinus();
-    }, 70);
+    }, 100);
   };
 
   const stopAction = () => {
@@ -72,7 +69,7 @@ export default function CounterDisplay({
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
