@@ -8,117 +8,123 @@ type Props = {
   onReset: () => void;
 };
 
-  export default function CounterDisplay({
-    count,
-    onAdd,
-    onMinus,
-    onReset,
-  }: Props) {
-    const intervalRef = useRef<any>(null);
+export default function CounterDisplay({
+  count,
+  onAdd,
+  onMinus,
+  onReset,
+}: Props) {
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-const startAdding = () => {
-  intervalRef.current = setInterval(() => {
-    onAdd();
-  }, 100);
-};
+  const startAdding = () => {
+    if (intervalRef.current) return;
 
-const startMinus = () => {
-  intervalRef.current = setInterval(() => {
-    onMinus();
-  }, 100);
-};
+    intervalRef.current = setInterval(() => {
+      onAdd();
+    }, 70);
+  };
 
-const stopAction = () => {
-  if (intervalRef.current) {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-  }
-};
+  const startMinus = () => {
+    if (intervalRef.current) return;
+
+    intervalRef.current = setInterval(() => {
+      onMinus();
+    }, 70);
+  };
+
+  const stopAction = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ako ang Child Component</Text>
+      <Text style={styles.title}>Counter Controller</Text>
 
-      {/* Display the count value received from the parent component via props */}
       <Text style={styles.number}>{count}</Text>
-      <Text style={styles.label}>[PROPS FUNCTION]</Text>
+      <Text style={styles.label}>Hold buttons for continuous action</Text>
 
       <TouchableOpacity
-  style={styles.addBtn}
-  onPress={onAdd}
-  onPressIn={startAdding}
-  onPressOut={stopAction}
->
-        <Text style={styles.btnText}>Add Count</Text>
+        style={[styles.btn, styles.addBtn]}
+        onPress={onAdd}
+        onPressIn={startAdding}
+        onPressOut={stopAction}
+      >
+        <Text style={styles.btnText}>＋ Add</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={styles.minusBtn}
+        style={[styles.btn, styles.minusBtn]}
         onPress={onMinus}
         onPressIn={startMinus}
         onPressOut={stopAction}
       >
-        <Text style={styles.btnText}>Minus Count</Text>
+        <Text style={styles.btnText}>－ Minus</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={styles.resetBtn}
+        style={[styles.btn, styles.resetBtn]}
         onPress={onReset}
-        onPressIn={startAdding}
-        onPressOut={stopAction}
       >
-        <Text style={styles.btnText}>Reset Count</Text>
+        <Text style={styles.btnText}>Reset</Text>
       </TouchableOpacity>
     </View>
   );
-}
-
+};
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     padding: 20,
-    borderRadius: 15,
-    borderWidth: 2,
-    borderColor: 'white',
+    borderRadius: 20,
     alignItems: 'center',
-    backgroundColor: '#f0e5ff',
+    backgroundColor: '#121212',
   },
+
   title: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
     marginBottom: 10,
-    fontWeight: 'bold',
   },
-  label: {
-    color: 'black',
-    marginTop: 10,
-  },
+
   number: {
-    fontSize: 40,
-    marginVertical: 10,
+    fontSize: 60,
+    marginVertical: 15,
     fontWeight: 'bold',
+    color: '#00ffcc',
   },
+
+  label: {
+    color: '#888',
+    marginBottom: 15,
+  },
+
+  btn: {
+    padding: 15,
+    borderRadius: 12,
+    width: '100%',
+    marginTop: 10,
+    alignItems: 'center',
+  },
+
   addBtn: {
-    backgroundColor: 'orange',
-    padding: 12,
-    borderRadius: 10,
-    width: '100%',
-    marginTop: 10,
+    backgroundColor: '#00c853',
   },
+
   minusBtn: {
-    backgroundColor: 'green',
-    padding: 12,
-    borderRadius: 10,
-    width: '100%',
-    marginTop: 10,
+    backgroundColor: '#d50000',
   },
+
   resetBtn: {
-    backgroundColor: 'red',
-    padding: 12,
-    borderRadius: 10,
-    width: '100%',
-    marginTop: 10,
+    backgroundColor: '#2962ff',
   },
+
   btnText: {
     color: '#fff',
-    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
