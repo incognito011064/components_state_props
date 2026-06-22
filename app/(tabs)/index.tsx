@@ -15,12 +15,23 @@ export default function HomeScreen() {
       <Text style={styles.title}>Speed Counter</Text>
 
       
-      <View style={styles.speedometer}>
-        <View style={styles.innerCircle}>
-          <Text style={styles.speedText}>{count}</Text>
-          <Text style={styles.kmh}>STATE</Text>
-        </View>
-      </View>
+      <View style={styles.dashboard}>
+  <View style={styles.gaugeOuter}>
+    
+    {/* top label */}
+    <Text style={styles.topLabel}>SPEED</Text>
+
+    {/* center display */}
+    <View style={styles.gaugeInner}>
+      <Text style={styles.speedText}>{count}</Text>
+      <Text style={styles.unit}>KM/H</Text>
+    </View>
+
+    {/* bottom label */}
+    <Text style={styles.bottomLabel}>READY</Text>
+
+  </View>
+</View>
 
       <CounterDisplay
         count={count}
@@ -48,40 +59,67 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  speedometer: {
-    width: 220,
-    height: 220,
-    borderRadius: 110,
-    borderWidth: 15,
-    borderColor: '#ff3b3b',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 30,
-    backgroundColor: '#1a1a1a',
-    shadowColor: '#ff3b3b',
-    shadowOpacity: 0.8,
-    shadowRadius: 20,
-    elevation: 20,
-  },
+dashboard: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom: 30,
+},
 
-  innerCircle: {
-    width: 160,
-    height: 160,
-    borderRadius: 80,
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+gaugeOuter: {
+  width: 260,
+  height: 260,
+  borderRadius: 130,
+  borderWidth: 12,
+  borderColor: '#ff3b3b',
+  backgroundColor: '#111',
 
-  speedText: {
-    color: '#00ffcc',
-    fontSize: 42,
-    fontWeight: 'bold',
-  },
+  justifyContent: 'center',
+  alignItems: 'center',
 
-  kmh: {
-    color: '#aaa',
-    fontSize: 14,
-    marginTop: 5,
-  },
+  shadowColor: '#ff3b3b',
+  shadowOpacity: 0.9,
+  shadowRadius: 25,
+  elevation: 25,
+},
+
+gaugeInner: {
+  width: 170,
+  height: 170,
+  borderRadius: 85,
+  backgroundColor: '#000',
+
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  borderWidth: 2,
+  borderColor: '#333',
+},
+
+speedText: {
+  fontSize: 48,
+  fontWeight: 'bold',
+  color: '#00ffcc',
+},
+
+unit: {
+  fontSize: 14,
+  color: '#aaa',
+  marginTop: 5,
+},
+
+topLabel: {
+  position: 'absolute',
+  top: 20,
+  color: '#888',
+  fontSize: 12,
+  letterSpacing: 2,
+},
+
+bottomLabel: {
+  position: 'absolute',
+  bottom: 20,
+  color: '#ff3b3b',
+  fontSize: 12,
+  letterSpacing: 2,
+},
 });
