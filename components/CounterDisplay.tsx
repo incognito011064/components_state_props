@@ -49,7 +49,7 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
         onPressIn={startAdding}
         onPressOut={stopAction}
       >
-        <Text style={styles.btnText}>＋ Add</Text>
+        <Text style={styles.btnText}> Add</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -58,7 +58,7 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
         onPressIn={startMinus}
         onPressOut={stopAction}
       >
-        <Text style={styles.btnText}>－ Minus</Text>
+        <Text style={styles.btnText}> Minus</Text>
       </TouchableOpacity>
 
       <TouchableOpacity

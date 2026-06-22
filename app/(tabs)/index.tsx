@@ -4,8 +4,6 @@ import CounterDisplay from '../../components/CounterDisplay';
 
 export default function HomeScreen() {
   const [count, setCount] = useState(100);
-
-
   const addCount = () => setCount(prev => prev + 1);
   const minusCount = () => setCount(prev => prev - 1);
   const resetCount = () => setCount(100);
@@ -16,22 +14,19 @@ export default function HomeScreen() {
 
       
       <View style={styles.dashboard}>
-  <View style={styles.gaugeOuter}>
-    
-    {/* top label */}
-    <Text style={styles.topLabel}>SPEED</Text>
+        <View style={styles.gaugeOuter}>
 
-    {/* center display */}
-    <View style={styles.gaugeInner}>
-      <Text style={styles.speedText}>{count}</Text>
-      <Text style={styles.unit}>KM/H</Text>
-    </View>
+          <Text style={styles.topLabel}>SPEED</Text>
 
-    {/* bottom label */}
-    <Text style={styles.bottomLabel}>READY</Text>
+          <View style={styles.gaugeInner}>
+            <Text style={styles.speedText}>{count}</Text>
+            <Text style={styles.unit}>KM/H</Text>
+          </View>
 
-  </View>
-</View>
+          <Text style={styles.bottomLabel}>READY</Text>
+
+        </View>
+      </View>
 
       <CounterDisplay
         count={count}
